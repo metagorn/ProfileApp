@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "profileapp",
     "name": "profileapp",
     "slug": "profileapp",
     "version": "1.0.0",
