@@ -5,8 +5,7 @@ const { width, height } = Dimensions.get('window');
 const Home = () => {
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.gradientBackground}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>        <View style={[styles.gradientBackground, { position: 'relative' }]}>
         <View style={styles.backgroundPattern} />
         
         <View style={styles.header}>
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: height,
     backgroundColor: '#0a0a0f',
-    position: 'relative',
   },
   backgroundPattern: {
     position: 'absolute',
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    backgroundColor: '#1a1a2e',
     opacity: 0.1,
   },
   header: {
@@ -346,7 +344,6 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     opacity: 0.03,
-    backgroundColor: 'repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 36px)',
   },
 });
 
