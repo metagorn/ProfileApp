@@ -1,11 +1,12 @@
+import React from 'react';
 import { Text, View, Image, StyleSheet, ScrollView, Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get('window');
 
 const Home = () => {
-
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>        <View style={[styles.gradientBackground, { position: 'relative' }]}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={[styles.gradientBackground, { position: 'relative' }]}>
         <View style={styles.backgroundPattern} />
         
         <View style={styles.header}>
@@ -185,7 +186,6 @@ const styles = StyleSheet.create({
   },
   infoCardsContainer: {
     marginBottom: 30,
-    gap: 20,
   },
   infoCard: {
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
@@ -259,13 +259,14 @@ const styles = StyleSheet.create({
   skillsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 12,
   },
   skillChip: {
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 20,
     borderWidth: 1,
+    marginRight: 12,
+    marginBottom: 12,
   },
   skillReact: {
     backgroundColor: 'rgba(97, 218, 251, 0.15)',
