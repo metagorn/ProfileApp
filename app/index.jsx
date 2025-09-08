@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View, Image, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native";
-import { Link, router } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useTheme } from "../context/AppTheme";
 import { useAuth } from "../context/AuthContext";
 
@@ -8,14 +8,8 @@ import { useAuth } from "../context/AuthContext";
 const Home = () => {
   const { colors } = useTheme();
   const { token, loading } = useAuth();
-
-  useEffect(() => {
-    if (!loading && !token) {
-      router.replace('/login');
-    }
-  }, [loading, token]);
   
-  if (!token) return null;
+  if (!loading && !token) return <Redirect href="/login" />;
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView 
@@ -130,6 +124,13 @@ const Home = () => {
               style={[styles.button, { backgroundColor: colors.primary }]}
             >
               <Text style={styles.buttonText}>Go To 📚 About Page</Text>
+            </Link>
+            <View style={{ height: 10 }} />
+            <Link
+              href="/books"
+              style={[styles.button, { backgroundColor: colors.primary }]}
+            >
+              <Text style={styles.buttonText}>Manage Books</Text>
             </Link>
           </View>
         </View>

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native";
-import { Link, router } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useTheme } from "../context/AppTheme";
 import { useAuth } from "../context/AuthContext";
 
@@ -10,13 +10,8 @@ const About = () => {
   const { colors } = useTheme();
   const { token, loading } = useAuth();
 
-  useEffect(() => {
-    if (!loading && !token) {
-      router.replace('/login');
-    }
-  }, [loading, token]);
-
   if (!token) return null;
+  if (!loading && !token) return <Redirect href="/login" />;
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} showsVerticalScrollIndicator={false}>
       <View style={[styles.gradientBackground, { backgroundColor: colors.background }]}>
