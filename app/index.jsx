@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, Image, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useTheme } from "../context/AppTheme";
+import { useAuth } from "../context/AuthContext";
 
 
 const Home = () => {
   const { colors } = useTheme();
+  const { token, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !token) {
+      router.replace('/login');
+    }
+  }, [loading, token]);
   
+  if (!token) return null;
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView 

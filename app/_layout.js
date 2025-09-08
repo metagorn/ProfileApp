@@ -2,6 +2,8 @@ import { Stack } from "expo-router";
 import { ThemeProvider, useTheme } from "../context/AppTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { AuthProvider } from "../context/AuthContext";
 
 function StackLayout() {
   const { isDarkMode, toggleTheme, colors } = useTheme();
@@ -20,6 +22,18 @@ function StackLayout() {
           },
         }}
       >
+        <Stack.Screen
+          name="login"
+          options={{
+            title: "Login",
+          }}
+        />
+        <Stack.Screen
+          name="register"
+          options={{
+            title: "Register",
+          }}
+        />
         <Stack.Screen
           name="index"
           options={{
@@ -42,7 +56,9 @@ function StackLayout() {
 export default function Layout() {
   return (
     <ThemeProvider>
-      <StackLayout />
+      <AuthProvider>
+        <StackLayout />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
